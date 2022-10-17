@@ -1,6 +1,6 @@
 const topo = {
-    boasVindas: 'Olá pessoa',
-    leganda: 'encontre os melhores produtores',
+    boasVindas: 'Olá pessoa modificada',
+    legenda: 'encontre os melhores produtores',
 };
 
 export default topo;

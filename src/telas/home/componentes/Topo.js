@@ -1,22 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import logo from '../../../assets/logo.png';
 import { carregarTopo } from '../../../servicos/carregarDados'
 
 function Topo() {
-    function atualizarTopo() {
-        return carregarTopo();
-    }
+    const [topoState, setTopoState] = useState({
+        boasVindas: 'Estado inicial',
+        legenda: 'estado inicial',
+    })
+
+    let dados = carregarTopo();
+
     useEffect(() => {
-        console.log("teste")
-        console.log(atualizarTopo())
-    }, [])
+        setTopoState(dados)
+    }, [dados])
 
     return (
         <View style={estilos.topo}>
             <Image style={estilos.imagem} source={logo} />
-            <Text style={estilos.boasVindas}>Olá pessoa!</Text>
-            <Text style={estilos.legenda}>Encontre os melhores produtores</Text>
+            <Text style={estilos.boasVindas}>{topoState.boasVindas}</Text>
+            <Text style={estilos.legenda}>{topoState.legenda}</Text>
         </View>
     );
 }
